@@ -13,11 +13,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Character Moveset Creator Pose Detection PWA</h1>
+    <div class="container">
+        <h1>Character Moveset Creator Pose Detection PWA</h1>
 
-    <div class="video-container">
-        <video id="video" autoplay playsinline></video>
-        <canvas id="output"></canvas>
+        <div class="video-container">
+            <video id="video" autoplay playsinline></video>
+            <canvas id="output"></canvas>
+        </div>
+        <div class="ip-container">
+            <input type="text" id="ip1" maxlength="3" oninput="moveToNext(this, 'ip2')" placeholder="192">
+            <span>.</span>
+            <input type="text" id="ip2" maxlength="3" oninput="moveToNext(this, 'ip3')" placeholder="168">
+            <span>.</span>
+            <input type="text" id="ip3" maxlength="3" oninput="moveToNext(this, 'ip4')" placeholder="1">
+            <span>.</span>
+            <input type="text" id="ip4" maxlength="3" placeholder="100">
+            <input type="text" id="port" maxlength="5" placeholder="8081">
+        </div>
+        
+        <div class="ip-button">
+            <button onclick="connectToUnity()">Connect to Unity</button>
+        </div>
+
+        <div class="pose-data">
+            <h2>Pose Data:</h2>
+            <div id="poseDataDisplay">Waiting for pose data...</div>
+        </div>
     </div>
 
     <script type="module" src="script.js"></script>
@@ -27,6 +48,7 @@
                 .then(() => console.log("Service Worker Registered"));
         }
     </script>
+    <script type="module" src="websocket.js"></script>
     
 </body>
 </html>

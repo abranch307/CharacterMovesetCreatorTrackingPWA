@@ -63,13 +63,18 @@ async function processVideo() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (poses.landmarks.length > 0) {
+    if (poses.landmarks && poses.landmarks.length > 0) {
         ctx.fillStyle = "red";
         poses.landmarks[0].forEach(({ x, y }) => {
             ctx.beginPath();
             ctx.arc(x * canvas.width, y * canvas.height, 5, 0, 2 * Math.PI);
             ctx.fill();
         });
+
+        // ✅ Send Pose Data to WebSocket.js
+        if (window.sendPoseDataToWebSocket) {
+            window.sendPoseDataToWebSocket(poses.landmarks[0]);
+        }
     }
 
     requestAnimationFrame(processVideo);

@@ -7,7 +7,41 @@ body {
     color: white;
     font-family: Arial, sans-serif;
     margin: 0;
-    overflow: hidden;
+    padding: 20px;
+    min-height: 100vh; /* Ensure the full viewport height is used */
+    overflow-y: auto; /* Allow scrolling */
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+}
+
+.ip-container {
+    display: flex;
+    gap: 5px;
+    justify-content: center; /* ✅ Horizontally center */
+    align-items: center; /* ✅ Vertically center */
+    flex-wrap: wrap; /* ✅ Wrap items if needed */
+    margin-bottom: 10px; /* Add spacing */
+}
+
+.ip-button {
+    display: flex;
+    gap: 5px;
+    justify-content: center; /* ✅ Horizontally center */
+    align-items: center; /* ✅ Vertically center */
+    flex-wrap: wrap; /* ✅ Wrap items if needed */
+    margin-bottom: 10px; /* Add spacing */
+}
+
+.pose-data {
+    display: flex;
+    gap: 5px;
+    justify-content: center; /* ✅ Horizontally center */
+    align-items: center; /* ✅ Vertically center */
+    flex-wrap: wrap; /* ✅ Wrap items if needed */
+    margin-bottom: 10px; /* Add spacing */
 }
 
 .video-container {
@@ -16,11 +50,35 @@ body {
     max-width: 800px; /* Limit max width */
 }
 
-video {
+/* ✅ Improved Pose Data Display Styling */
+#poseDataDisplay {
+    background-color: black;
+    padding: 10px;
+    margin-top: 15px;
     width: 100%;
-    height: auto;
+    max-width: 250px; /* Make it wider */
+    min-height: 500px; /* ✅ Increase height for full visibility */
+    overflow-y: auto; /* ✅ Enable scrolling */
+    text-align: left;
+    font-size: 14px;
+    white-space: pre-wrap;
+    border-radius: 5px;
+    border: 1px solid white;
+    position: relative;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
     display: block;
-    border-radius: 10px;
+    width: 100%; /* ✅ Make button full width of container */
+    max-width: 300px; /* ✅ Restrict width */
 }
 
 canvas {
@@ -31,4 +89,22 @@ canvas {
     height: 100%;  /* Ensure it matches the video height */
     border-radius: 10px;
     pointer-events: none; /* Allow interaction with video */
+}
+
+input {
+    font-size: 16px;
+    padding: 8px;
+    margin: 5px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    width: 80px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
 }
