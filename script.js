@@ -72,8 +72,8 @@ async function processVideo() {
         });
 
         // ✅ Send Pose Data to WebSocket.js
-        if (window.sendPoseDataToWebSocket) {
-            window.sendPoseDataToWebSocket(poses.landmarks[0]);
+        if (window.createPoseData) {
+            window.createPoseData(poses.landmarks[0]);
         }
     }
 
