@@ -1,7 +1,7 @@
 {
     "name": "Character Moveset Creator Pose Detection",
     "short_name": "CMCPWA",
-    "start_url": "/index.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
