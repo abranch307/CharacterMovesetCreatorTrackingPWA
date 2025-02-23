@@ -3,7 +3,7 @@ let socket;
 function connectToUnity() {
     const ip = `${document.getElementById("ip1").value}.${document.getElementById("ip2").value}.${document.getElementById("ip3").value}.${document.getElementById("ip4").value}`;
     const port = document.getElementById("port").value || "8081"; // Default to 8081 if empty
-    const url = `ws://${ip}:${port}/PoseData`;
+    const url = `wss://${ip}:${port}/PoseData`;
 
     console.log(`Attempting connection to ${url}`);
 
