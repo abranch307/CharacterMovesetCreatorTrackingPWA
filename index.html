@@ -28,11 +28,14 @@
             <input type="text" id="ip3" maxlength="3" oninput="moveToNext(this, 'ip4')" placeholder="1">
             <span>.</span>
             <input type="text" id="ip4" maxlength="3" placeholder="100">
-            <input type="text" id="port" maxlength="5" placeholder="8081">
         </div>
         
         <div class="ip-button">
             <button onclick="connectToUnity()">Connect to Unity</button>
+        </div>
+
+        <div class="download-certificate">
+            <button onclick="downloadCertificate()">Download SSL Certificate</button>
         </div>
 
         <div class="pose-data">
@@ -41,15 +44,14 @@
         </div>
     </div>
 
-    <script type="module" src="pose-landmarks.js"></script>
+    <script type="module" src="websocket.js"></script>
     <script type="module" src="script.js"></script>
+    <script type="module" src="pose-landmarks.js"></script>
     <script>
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("/sw.js")
                 .then(() => console.log("Service Worker Registered"));
         }
     </script>
-    <script type="module" src="websocket.js"></script>
-    
 </body>
 </html>

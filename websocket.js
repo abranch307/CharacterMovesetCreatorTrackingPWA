@@ -1,9 +1,8 @@
 let socket;
 
-function connectToUnity() {
-    const ip = `${document.getElementById("ip1").value}.${document.getElementById("ip2").value}.${document.getElementById("ip3").value}.${document.getElementById("ip4").value}`;
-    const port = document.getElementById("port").value || "8081"; // Default to 8081 if empty
-    const url = `wss://${ip}:${port}/PoseData`;
+function connectToUnity () {
+    // Get wss url
+    const url = `${getWssBaseUrl()}/PoseData`;
 
     console.log(`Attempting connection to ${url}`);
 
@@ -28,15 +27,32 @@ function connectToUnity() {
     };
 }
 
+function getBaseUrl(portParam)
+{
+    const ip = `${document.getElementById("ip1").value}.${document.getElementById("ip2").value}.${document.getElementById("ip3").value}.${document.getElementById("ip4").value}`;
+    const port = portParam || "8081"; // Default to 8081 if empty
+    return `${ip}:${port}`;
+}
+
+function getHttpBaseUrl()
+{
+    return `http://${getBaseUrl(8082)}`;
+}
+
+function getWssBaseUrl()
+{
+    return `wss://${getBaseUrl(8081)}`;
+}
+
 // ✅ Auto-move between octets in IP address input
-function moveToNext(current, nextId) {
+window.moveToNext = (current, nextId) => {
     if (current.value.length === 3) {
         document.getElementById(nextId)?.focus();
     }
 }
 
 // ✅ Receive Pose Data from `script.js` and Send via WebSocket
-window.sendPoseDataToWebSocket = function (poseData) {
+function sendPoseDataToWebSocket(poseData) {
     // ✅ Display pose data on-screen
     document.getElementById("poseDataDisplay").innerText = JSON.stringify(poseData, null, 2);
 
@@ -48,6 +64,15 @@ window.sendPoseDataToWebSocket = function (poseData) {
     }
 };
 
-// Expose function globally for HTML button
+async function downloadCertificate() {
+    let certURL = `${getHttpBaseUrl()}/cert`;
+
+    window.open(certURL, "_blank");
+    
+    console.log("✅ Redirecting to certificate download:", certURL);
+}
+
+
 window.connectToUnity = connectToUnity;
-window.moveToNext = moveToNext;
+window.downloadCertificate = downloadCertificate;
+window.sendPoseDataToWebSocket = sendPoseDataToWebSocket;

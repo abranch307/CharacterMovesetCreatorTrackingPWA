@@ -17,6 +17,16 @@ body {
     max-width: 800px;
 }
 
+.download-certificate
+{
+    display: flex;
+    gap: 5px;
+    justify-content: center; /* ✅ Horizontally center */
+    align-items: center; /* ✅ Vertically center */
+    flex-wrap: wrap; /* ✅ Wrap items if needed */
+    margin-bottom: 10px; /* Add spacing */
+}
+
 .ip-container {
     display: flex;
     gap: 5px;
