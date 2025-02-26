@@ -3,7 +3,7 @@ let socket;
 async function requestLocalNetworkAccess() {
     try {
         // ✅ Make a simple request to a local device (your Unity game)
-        const response = await fetch(`${getHttpBaseUrl(8081)}`, { mode: "no-cors" });
+        const response = await fetch(`${getHttpBaseUrl(8082)}`, { mode: "no-cors" });
 
         console.log("📡 Local network request sent:", response);
     } catch (error) {
@@ -12,6 +12,9 @@ async function requestLocalNetworkAccess() {
 }
 
 async function connectToUnity () {
+    // ✅ Require user interaction (iOS restriction workaround)
+    alert("Press OK to allow local network access.");
+    
     await requestLocalNetworkAccess(); // 🟢 Ensures iOS prompts for Local Network
 
     // Get wss url
