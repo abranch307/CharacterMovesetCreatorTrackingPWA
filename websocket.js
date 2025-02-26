@@ -1,6 +1,19 @@
 let socket;
 
-function connectToUnity () {
+async function requestLocalNetworkAccess() {
+    try {
+        // ✅ Make a simple request to a local device (your Unity game)
+        const response = await fetch(`${getHttpBaseUrl(8081)}`, { mode: "no-cors" });
+
+        console.log("📡 Local network request sent:", response);
+    } catch (error) {
+        console.warn("⚠️ Local network request failed (this is normal):", error);
+    }
+}
+
+async function connectToUnity () {
+    await requestLocalNetworkAccess(); // 🟢 Ensures iOS prompts for Local Network
+
     // Get wss url
     const url = `${getWssBaseUrl()}/PoseData`;
 
@@ -34,9 +47,9 @@ function getBaseUrl(portParam)
     return `${ip}:${port}`;
 }
 
-function getHttpBaseUrl()
+function getHttpBaseUrl(portParam)
 {
-    return `http://${getBaseUrl(8082)}`;
+    return `http://${getBaseUrl(portParam)}`;
 }
 
 function getWssBaseUrl()
@@ -65,7 +78,7 @@ function sendPoseDataToWebSocket(poseData) {
 };
 
 async function downloadCertificate() {
-    let certURL = `${getHttpBaseUrl()}/cert`;
+    let certURL = `${getHttpBaseUrl(8082)}/cert`;
 
     window.open(certURL, "_blank");
     
