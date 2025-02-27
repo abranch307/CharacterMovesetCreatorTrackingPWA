@@ -14,7 +14,7 @@ async function requestLocalNetworkAccess() {
 async function connectToUnity () {
     // ✅ Require user interaction (iOS restriction workaround)
     alert("Press OK to allow local network access.");
-    
+
     await requestLocalNetworkAccess(); // 🟢 Ensures iOS prompts for Local Network
 
     // Get wss url
@@ -58,13 +58,6 @@ function getHttpBaseUrl(portParam)
 function getWssBaseUrl()
 {
     return `wss://${getBaseUrl(8081)}`;
-}
-
-// ✅ Auto-move between octets in IP address input
-window.moveToNext = (current, nextId) => {
-    if (current.value.length === 3) {
-        document.getElementById(nextId)?.focus();
-    }
 }
 
 // ✅ Receive Pose Data from `script.js` and Send via WebSocket

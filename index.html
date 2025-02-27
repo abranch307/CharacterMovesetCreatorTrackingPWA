@@ -30,8 +30,12 @@
             <input type="text" id="ip4" maxlength="3" placeholder="100">
         </div>
         
-        <div class="ip-button">
+        <!-- <div class="ip-button">
             <button onclick="connectToUnity()">Connect to Unity</button>
+        </div> -->
+
+        <div class="ip-button">
+            <button id="connectButton">Connect to Unity Using WebRTC</button>
         </div>
 
         <div class="download-certificate">
@@ -44,7 +48,8 @@
         </div>
     </div>
 
-    <script type="module" src="websocket.js"></script>
+    <script type="module" src="webrtc.js"></script>
+    <!--<script type="module" src="websocket.js"></script>-->
     <script type="module" src="script.js"></script>
     <script type="module" src="pose-landmarks.js"></script>
     <script>

@@ -80,4 +80,11 @@ async function processVideo() {
     requestAnimationFrame(processVideo);
 }
 
+// ✅ Auto-move between octets in IP address input
+window.moveToNext = (current, nextId) => {
+    if (current.value.length === 3) {
+        document.getElementById(nextId)?.focus();
+    }
+}
+
 setupCamera();

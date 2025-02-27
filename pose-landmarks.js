@@ -28,7 +28,8 @@ window.createPoseData = (poseLandmarks) =>
         };
     });
 
-    window.sendPoseDataToWebSocket(poseData);
+    //window.sendPoseDataToWebSocket(poseData);
+    window.sendPoseDataOverWebRTC(poseData);
 }
 
 // ✅ Function to Update Pose Display Background Color
